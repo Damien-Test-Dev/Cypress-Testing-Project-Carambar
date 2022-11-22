@@ -4,12 +4,14 @@ const { faker } = require('@faker-js/faker');
 
 //const randomName = faker.name.fullName(); // Rowan Nikolaus
 const randomEmail = faker.internet.email(); // Kassandra.Haley@erich.biz
+const randamPassword = faker.internet.password(10, false, /[A-Za-z0-9]/, 'Q@2')
+const firstName = faker.name.firstName()
+const lastName = faker.name.lastName()
 
 
-
-describe('Account Creation', () => {
+describe('Account Creation for a particular', () => {
     
-    beforeEach('Carambar web site', () => {
+    before('Carambar web site', () => {
         cy.visit('https://www.laboutique.carambarco.com/')
     })
     
@@ -75,14 +77,14 @@ describe('Account Creation', () => {
 
         // First name
         cy.get('[name="firstname"]')
-        .type('Henry')
+        .type(firstName)
         .should('have.attr', 'name')
         
 
 
         // Last name
         cy.get('[name="lastname"]')
-        .type('RATATA')
+        .type(lastName)
         .should('have.attr', 'name')
 
         // Particular type
@@ -99,8 +101,10 @@ describe('Account Creation', () => {
 
         // Password input
         cy.get('[name="password"]')
-        .type('Jambon@2')
+        .type(randamPassword)
         .should('have.attr', 'type')
+
+        console.log(randamPassword)
 
         // Checkbox validation newsletter
         cy.get('[name="newsletter"]')
