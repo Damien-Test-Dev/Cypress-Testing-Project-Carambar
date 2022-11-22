@@ -104,7 +104,7 @@ describe('Account Creation for a particular', () => {
         .type(randamPassword)
         .should('have.attr', 'type')
 
-        console.log(randamPassword)
+        // console.log(randamPassword)
 
         // Checkbox validation newsletter
         cy.get('[name="newsletter"]')
