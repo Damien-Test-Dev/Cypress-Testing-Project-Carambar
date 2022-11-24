@@ -23,3 +23,39 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// ---------------**-*-*-*-*-*---------------*-*-*-*-*-**-*--*---*-*-*-**-*
+
+// Command for login Carambar
+
+Cypress.Commands.add('login', (email, password) => {
+  
+    //it("Passing Case : Login with real account", () => {
+        cy.get('[class="nq-c-cnilbanner-buttons"]')
+        .contains("J'accepte")
+        .click()
+
+        cy.get('[class="login"]')
+        .contains('Connecte-toi')
+        .click()
+
+        cy.get('[name="email"]')
+        .first()
+        .type(email)
+        .should('have.attr', 'type')
+        .and('contain', 'email')
+
+        cy.get('[name="password"]')
+        .type(password)
+        .should('have.attr', 'type')
+        .and('contain', 'password')
+
+        cy.get('[data-link-action="sign-in"]')
+        // .should('have.attr', 'type')
+        // .should('contain', 'submit')
+        .contains('Connecte-toi')
+        .click()
+        
+    //})
+
+})
