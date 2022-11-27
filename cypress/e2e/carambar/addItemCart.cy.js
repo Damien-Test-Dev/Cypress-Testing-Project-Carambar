@@ -1,4 +1,10 @@
 // Add an item in the cart
+//
+Cypress.on('uncaught:exception', (err, runnable) => {
+    // returning false here prevents Cypress from
+    // failing the test
+    return false
+  })
 
 
 
@@ -67,6 +73,11 @@ describe('Ajout d\'un article dans le panier', () => {
         })
 
         // click button 'Je commande'
+        cy.get('.nq-c-CartSummary-actions')
+        .contains('Je commande')
+        .click()
+
+        // end when everything is ok
         
 
 
